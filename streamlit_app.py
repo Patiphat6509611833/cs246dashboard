@@ -25,11 +25,18 @@ df = pd.read_csv('data/แบบสอบถามพฤติกรรมกา
 
 
 
-# สร้าง Heatmap ด้วย Plotly Express
-fig5= px.imshow(df['ในหนึ่งวันท่านรับประทานอาหารในช่วงเวลาไหนบ้าง'].str.get_dummies(sep=', '), 
-                text_auto=True, aspect="auto")
+left_column, middle_column, right_column = st.columns(3)
+with left_column:
+    st.subheader("จำนวนผู้ตอบแบบสอบถาม:")
+    st.subheader("101 คน")
+with middle_column:
+    st.subheader("Average Rating:")
+    st.subheader("")
+with right_column:
+    st.subheader("Average Sales Per Transaction:")
+    st.subheader("  ")
 
-# เรียกใช้ Streamlit เพื่อแสดงผล
+st.markdown("""---""")
 
 
 
