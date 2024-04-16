@@ -25,28 +25,13 @@ df = pd.read_csv('data/แบบสอบถามพฤติกรรมกา
 # Sidebar
 
 
-# สร้าง sidebar
-with st.sidebar:
-    st.title(' US Population Dashboard')
-    
-    # สร้างรายการชั้นปีที่กำลังศึกษาอยู่
-    grade_list = list(df['ชั้นปีที่กำลังศึกษาอยู่'].unique())[::-1]
-    
-    # เลือกชั้นปี
-    selected_grade = st.selectbox('Select a grade', grade_list)
-    
-    # กรองข้อมูลตามชั้นปีที่เลือก
-    df_selected_grade = df[df['ชั้นปีที่กำลังศึกษาอยู่'] == selected_grade]
-    
-    #
-
-    # สร้างรายการธีมสี
-    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-    
-    # เลือกธีมสี
-    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 fig = px.pie(df, names='โปรดระบุเพศ')
 
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig)
+
+fig2 = px.pie(df, names='ท่านกำลังศึกษาอยู่คณะใด')
+
+# เรียกใช้ Streamlit เพื่อแสดงผล
+st.plotly_chart(fig2)
