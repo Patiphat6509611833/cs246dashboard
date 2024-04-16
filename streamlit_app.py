@@ -30,7 +30,7 @@ df = pd.read_csv('data/แบบสอบถามพฤติกรรมกา
 
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
-    st.subheader("จำนวนผู้ตอบแบบสอบถาม:")
+    st.subheader("จำนวนนักศึกษาที่ตอบแบบสอบถาม:")
     st.subheader("101 คน")
 
 st.markdown("""---""")
@@ -50,12 +50,20 @@ if option == "โรงอาหาร":
         st.header('')
         fig = px.pie(df, names='โดยปกติแล้วท่านซื้ออาหารจากโรงอาหารหรือไม่')
         st.plotly_chart(fig)
+       
+        st.header('')
+        top_factors = df['ปัจจัยที่ท่านใช้ในการเลือกซื้ออาหารในโรงอาหารมหาวิทยาลัย'].value_counts().head(5)
+        fig2 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={'x': 'จำนวน', 'y': 'ปัจจัย'})
+       
+    st.plotly_chart(fig2)
 
     with col2:
-        st.header('')
+        st.header('โรงอาหารที่นักศึกษามักใช้บริการ')
         mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
         fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
         st.plotly_chart(fig4)
+        
+
 
 
 
