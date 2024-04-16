@@ -128,6 +128,46 @@ if option == "ร้านค้าภายนอก":
 
 
 
+if option == "ทำอาหารกินเอง":
+    col5, col6 = st.columns(2)
+    with col5:
+
+        st.header('เปอร์เซ็นการทำอาหารกินเองของนักศึกษา')
+        fig7= px.pie(df, names='โดยปกติแล้วท่านทำอาหารกินเองหรือไม่')
+        st.plotly_chart(fig7)
+       
+        
+    with col4:
+        st.header('จำนวนมื้ออาหารที่นักศึกษาทำกินเอง')
+        # นับความถี่ของค่าแต่ละค่าในคอลัมน์
+        meal_frequency2 = df['โดยเฉลี่ยแล้วท่านทำอาหารกินเองวันละกี่มื้อ'].value_counts()
+
+# สร้างกราฟวงกลม
+        fig_pie = px.pie(meal_frequency2, values=meal_frequency2.values, names=meal_frequency2.index, title='')
+
+# เรียกใช้ Streamlit เพื่อแสดงผล
+        st.plotly_chart(fig_pie)
+        st.header('ช่วงเวลาที่นักศึกษามักใช้บริการร้านอาหารนอกมหาวิทยาลัย')
+        eating_times3 = df['ท่านทำอาหารกินเองในช่วงเวลาใดบ้าง'].str.split(',').explode().str.strip()
+
+
+        eating_times_count3 = eating_times3.value_counts()
+
+
+        eating_times_df3 = pd.DataFrame({'time': eating_times_count3.index, 'count': eating_times_count3.values})
+
+
+        eating_times_df3 = eating_times_df3.sort_values(by='time')
+
+
+        fig_line3 = px.line(eating_times_df2, x='time', y='count',  markers=True)
+
+
+        st.plotly_chart(fig_line3)
+       
+
+
+
 
 
 
