@@ -109,19 +109,19 @@ if option == "ร้านค้าภายนอก":
 # เรียกใช้ Streamlit เพื่อแสดงผล
         st.plotly_chart(fig_pie)
         st.header('ช่วงเวลาที่นักศึกษามักใช้บริการร้านอาหารนอกมหาวิทยาลัย')
-        eating_times = df['ท่านซื้อ/สั่งอาหารในช่วงเวลาใดบ้าง'].str.split(',').explode().str.strip()
+        eating_times2 = df['ท่านซื้อ/สั่งอาหารในช่วงเวลาใดบ้าง'].str.split(',').explode().str.strip()
 
 
-        eating_times_count = eating_times.value_counts()
+        eating_times_count2 = eating_times2.value_counts()
 
 
-        eating_times_df = pd.DataFrame({'time': eating_times_count.index, 'count': eating_times_count.values})
+        eating_times_df2 = pd.DataFrame({'time': eating_times_count2.index, 'count': eating_times_count2.values})
 
 
-        eating_times_df = eating_times_df.sort_values(by='time')
+        eating_times_df2 = eating_times_df2.sort_values(by='time')
 
 
-        fig_line2 = px.line(eating_times_df, x='time', y='count',  markers=True)
+        fig_line2 = px.line(eating_times_df2, x='time', y='count',  markers=True)
 
 
         st.plotly_chart(fig_line2)
