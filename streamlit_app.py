@@ -23,7 +23,7 @@ df_reshaped = pd.read_csv('data/แบบสอบถามพฤติกรร
 
 #######################
 # Sidebar
-import streamlit as st
+
 
 # สร้าง sidebar
 with st.sidebar:
