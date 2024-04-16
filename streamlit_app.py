@@ -58,13 +58,10 @@ if option == "โรงอาหาร":
 
         st.plotly_chart(fig2) 
 
-        st.header('ช่วงเวลาที่นักศึกษามักใช้บริการร้านอาหารนอกมหาวิทยาลัย')
-        eating_times4 = df['ท่านซื้อ/สั่งอาหารในช่วงเวลาใดบ้าง'].str.split(',').explode().str.strip()
-        eating_times_count4 = eating_times4.value_counts()
-        eating_times_df4 = pd.DataFrame({'time': eating_times_count4.index, 'count': eating_times_count4.values})
-        eating_times_df4 = eating_times_df4.sort_values(by='time')
-        fig_line3 = px.line(eating_times_df4, x='time', y='count',  markers=True)
-        st.plotly_chart(fig_line3)
+        st.header('จำนวนมื้ออาหารทีนักศึกษาใช้บริการโรงอาหารมหาวิทยาลัย')
+        meal_frequency = df['โดยเฉลี่ยแล้วท่านอยู่ในมหาวิทยาลัยท่านรับประทานอาหารที่โรงอาหารวันละกี่มื้อ'].value_counts()
+        fig_pie = px.pie(meal_frequency, values=meal_frequency.values, names=meal_frequency.index, title='โดยเฉลี่ยแล้วท่านซื้อ/สั่งอาหารวันละกี่มื้อ')
+        st.plotly_chart(fig_pie)
 
 
 
