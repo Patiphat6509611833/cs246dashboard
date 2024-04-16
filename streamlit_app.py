@@ -40,7 +40,7 @@ st.plotly_chart(fig3)
 # แยกข้อมูลและลบช่องว่างด้านหน้าและด้านหลังของข้อมูล
 mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
 
-fig4 = px.bar(df, y='โรงอาหารที่ท่านใช้บริการเป็นประจำ')
+fig4 = px.bar(mcanteen, y='โรงอาหารที่ท่านใช้บริการเป็นประจำ')
 
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig4)
