@@ -8,7 +8,7 @@ import plotly.express as px
 #######################
 # Page configuration
 st.set_page_config(
-    page_title="US Population Dashboard",
+    page_title="cs246 DASHBOARD",
     page_icon="🏂",
     layout="wide",
     initial_sidebar_state="expanded")
@@ -18,23 +18,34 @@ alt.themes.enable("dark")
 
 #######################
 # Load data
-df_reshaped = pd.read_csv('data/us-population-2010-2019-reshaped.csv')
+df_reshaped = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์ (Responses) - Form Responses 1.csv')
 
 
 #######################
 # Sidebar
+import streamlit as st
+
+# สร้าง sidebar
 with st.sidebar:
     st.title('🏂 US Population Dashboard')
     
-    year_list = list(df_reshaped.year.unique())[::-1]
+    # สร้างรายการชั้นปีที่กำลังศึกษาอยู่
+    grade_list = list(df_reshaped['ชั้นปีที่กำลังศึกษาอยู่'].unique())[::-1]
     
-    selected_year = st.selectbox('Select a year', year_list)
-    df_selected_year = df_reshaped[df_reshaped.year == selected_year]
-    df_selected_year_sorted = df_selected_year.sort_values(by="population", ascending=False)
+    # เลือกชั้นปี
+    selected_grade = st.selectbox('Select a grade', grade_list)
+    
+    # กรองข้อมูลตามชั้นปีที่เลือก
+    df_selected_grade = df_reshaped[df_reshaped['ชั้นปีที่กำลังศึกษาอยู่'] == selected_grade]
+    
+    # เรียงลำดับข้อมูลตามประชากรจากมากไปน้อย
+    df_selected_grade_sorted = df_selected_grade.sort_values(by="population", ascending=False)
 
+    # สร้างรายการธีมสี
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+    
+    # เลือกธีมสี
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
-
 
 #######################
 # Plots
