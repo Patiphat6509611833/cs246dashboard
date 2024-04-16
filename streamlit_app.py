@@ -66,20 +66,23 @@ if option == "โรงอาหาร":
         fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
         st.plotly_chart(fig4)
         # แยกและทำความสะอาดข้อมูล
-        st.header('โรงอาหารที่นักศึกษามักใช้บริการ')
         eating_times = df['ในหนึ่งวันท่านรับประทานอาหารในช่วงเวลาไหนบ้าง'].str.split(',').explode().str.strip()
 
-        # นับความถี่ของแต่ละค่า
+# นับความถี่ของแต่ละค่า
         eating_times_count = eating_times.value_counts()
 
-        # สร้าง DataFrame จากค่าที่นับได้
+# สร้าง DataFrame จากค่าที่นับได้
         eating_times_df = pd.DataFrame({'time': eating_times_count.index, 'count': eating_times_count.values})
 
-        # สร้างกราฟเส้น
+# เรียงข้อมูลตามช่วงเวลา
+        eating_times_df = eating_times_df.sort_values(by='time')
+
+# สร้างกราฟเส้น
         fig_line = px.line(eating_times_df, x='time', y='count', title='จำนวนคนที่รับประทานอาหารในแต่ละช่วงเวลา', markers=True)
 
-        # เรียกใช้ Streamlit เพื่อแสดงผล
+# เรียกใช้ Streamlit เพื่อแสดงผล
         st.plotly_chart(fig_line)
+
 
 
 
