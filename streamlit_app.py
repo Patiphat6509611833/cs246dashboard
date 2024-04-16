@@ -1,4 +1,5 @@
 #######################
+
 # Import libraries
 import streamlit as st
 import pandas as pd
@@ -7,6 +8,7 @@ import plotly.express as px
 import seaborn as sns
 
 #######################
+
 # Page configuration
 st.set_page_config(
     page_title="cs246 DASHBOARD",
@@ -23,8 +25,12 @@ df = pd.read_csv('data/แบบสอบถามพฤติกรรมกา
 
 
 
-heatmap_data = df['ในหนึ่งวันท่านรับประทานอาหารในช่วงเวลาไหนบ้าง'].str.get_dummies(sep=', ')
-heatmap = sns.heatmap(heatmap_data.groupby(heatmap_data.columns.tolist()).size().unstack(), annot=True, cmap="YlGnBu")
+# สร้าง Heatmap ด้วย Plotly Express
+fig5= px.imshow(df['ในหนึ่งวันท่านรับประทานอาหารในช่วงเวลาไหนบ้าง'].str.get_dummies(sep=', '), 
+                text_auto=True, aspect="auto")
+
+# เรียกใช้ Streamlit เพื่อแสดงผล
+
 
 
 
@@ -57,4 +63,4 @@ with col2:
     
     st.header('โรงอาหารที่ได้รับความนิยม')
     st.plotly_chart(fig4)  # แสดง Bar chart ของโรงอาหารในคอลัมน์ที่สาม
-    st.pyplot(heatmap.figure)
+    st.plotly_chart(fig5)
