@@ -22,6 +22,14 @@ alt.themes.enable("dark")
 
 # Load data
 df = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
+# เริ่มต้น Slider
+selected_option = st.select_slider(
+    label="เลือกหัวข้อ:",
+    options=["โรงอาหาร", "ร้านค้าภายนอก", "ทำอาหารกินเอง"]
+)
+
+# แสดงผลหัวข้อที่ถูกเลือก
+st.write("คุณเลือก:", selected_option)
 
 
 
@@ -70,4 +78,4 @@ with col2:
     
     st.header('โรงอาหารที่ได้รับความนิยม')
     st.plotly_chart(fig4)  # แสดง Bar chart ของโรงอาหารในคอลัมน์ที่สาม
-    st.plotly_chart(fig5)
+    
