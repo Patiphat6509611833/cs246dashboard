@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import plotly.express as px
-import matplotlib.pyplot as plt
+
 #######################
 # Page configuration
 st.set_page_config(
@@ -53,7 +53,7 @@ with st.sidebar:
 count_by_year = df_reshaped['ชั้นปีที่กำลังศึกษาอยู่'].value_counts()
 
 # สร้างกราฟวงกลม
-fig, ax = plt.subplots()
+fig, ax = px.subplots()
 ax.pie(count_by_year, labels=count_by_year.index, autopct='%1.1f%%')
 
 # แสดงกราฟใน Streamlit
