@@ -37,10 +37,10 @@ fig3 = px.bar(df, y='ท่านพักอยู่ที่ใด')
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig3)
 
-# แยกข้อมูลและลบช่องว่างด้านหน้าและด้านหลังของข้อมูล
 mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
 
-fig4 = px.bar(mcanteen, y='โรงอาหารที่ท่านใช้บริการเป็นประจำ')
+# สร้างกราฟแท่ง
+fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
 
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig4)
