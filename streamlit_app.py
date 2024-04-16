@@ -30,10 +30,9 @@ with st.sidebar:
    
     
     options = ["โรงอาหาร", "ร้านค้าภายนอก", "ทำอาหารกินเอง"]
-    selected_options = st.multiselect('เลือกหัวข้อ', options)
+    selected_options = st.selectbox('เลือกหัวข้อ', options)
 
-    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
-    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
+    
 
 
 
