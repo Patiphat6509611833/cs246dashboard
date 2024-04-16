@@ -83,7 +83,7 @@ if option == "ร้านค้าภายนอก":
         st.plotly_chart(fig5)
        
         st.header('5 ปัจจัยที่ส่งผลมากที่สุดต่อการใช้บริการนอกมหาวิทยาลัย')
-        factors = df['ปัจจัยที่ท่านใช้ในการเลือกซื้ออาหารที่นอกมหาวิทยาลัย'].str.split(',').explode().str.strip()
+        factors = df['ปัจจัยที่ท่านใช้ในการเลือกซื้ออาหารที่ร้านอาหารนอกมหาวิทยาลัย'].str.split(',').explode().str.strip()
         top_factors = factors.value_counts().head(5)
         fig6 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={ 'x': '','y': 'ปัจจัย'})
 
