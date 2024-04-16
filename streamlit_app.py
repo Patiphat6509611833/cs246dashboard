@@ -26,25 +26,21 @@ df = pd.read_csv('data/แบบสอบถามพฤติกรรมกา
 
 
 
-fig = px.pie(df, names='โปรดระบุเพศ')
+fig = px.pie(df, names='ท่านพักอยู่ที่ใด')
 
 
 
 
-fig3 = px.bar(df, y='ท่านพักอยู่ที่ใด')
+
 
 
 
 mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
-
-# สร้างกราฟแท่ง
 fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
 
-# เรียกใช้ Streamlit เพื่อแสดงผล
 
 
-# Sidebar
-st.sidebar.title('Sidebar')
+
 
 # First column: Pie chart
 col1, col2 = st.columns(2)  # แบ่งหน้าจอเป็น 2 คอลัมน์
@@ -55,8 +51,7 @@ with col1:
 
 # Second column: Bar chart
 with col2:
-    st.header('Bar Chart')
-    st.plotly_chart(fig3)  # แสดง Bar chart ในคอลัมน์ที่สอง
+    
     st.header('Bar Chart of Canteens')
     st.plotly_chart(fig4)  # แสดง Bar chart ของโรงอาหารในคอลัมน์ที่สาม
 
