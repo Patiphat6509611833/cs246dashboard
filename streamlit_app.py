@@ -28,17 +28,6 @@ with st.sidebar:
 # Load data
 df = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
 
-# กำหนดเงื่อนไขเพื่อแสดงกราฟตามหัวข้อที่เลือก
-if option == "โรงอาหาร":
-    fig = px.pie(df, names='ท่านพักอยู่ที่ใด')
-    st.plotly_chart(fig)
-
-
-    
-
-
-
-
 left_column, middle_column, right_column = st.columns(3)
 with left_column:
     st.subheader("จำนวนผู้ตอบแบบสอบถาม:")
@@ -51,6 +40,30 @@ with right_column:
     st.subheader("  ")
 
 st.markdown("""---""")
+
+
+
+
+
+
+
+
+# กำหนดเงื่อนไขเพื่อแสดงกราฟตามหัวข้อที่เลือก
+if option == "โรงอาหาร":
+    col1, col2 = st.columns(2)
+    with col1:
+
+        st.header('จำนวนนักศึกษาที่ใช้บริการโรงอาหาร')
+        fig = px.pie(df, names='โดยปกติแล้วท่านซื้ออาหารจากโรงอาหารหรือไม่')
+        st.plotly_chart(fig)
+
+
+    
+
+
+
+
+
 
 
 
