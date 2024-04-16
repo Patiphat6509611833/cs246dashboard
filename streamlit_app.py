@@ -31,12 +31,16 @@ fig = px.pie(df, names='โปรดระบุเพศ')
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig)
 
-fig2 = px.pie(df, names='ท่านกำลังศึกษาอยู่คณะใด')
-
-# เรียกใช้ Streamlit เพื่อแสดงผล
-st.plotly_chart(fig2)
 
 fig3 = px.bar(df, y='ท่านพักอยู่ที่ใด')
 
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig3)
+
+# แยกข้อมูลและลบช่องว่างด้านหน้าและด้านหลังของข้อมูล
+mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
+
+fig4 = px.bar(df, y='โรงอาหารที่ท่านใช้บริการเป็นประจำ')
+
+# เรียกใช้ Streamlit เพื่อแสดงผล
+st.plotly_chart(fig4)
