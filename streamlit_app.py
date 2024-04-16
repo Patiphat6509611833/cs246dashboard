@@ -50,8 +50,7 @@ st.plotly_chart(fig4)
 st.sidebar.title('Sidebar')
 
 # First column: Pie chart
-
-col1, col2 = st.beta_columns(2)  # แบ่งหน้าจอเป็น 2 คอลัมน์
+col1, col2 = st.columns(2)  # แบ่งหน้าจอเป็น 2 คอลัมน์
 
 with col1:
     st.header('Pie Chart')
@@ -65,3 +64,4 @@ with col2:
 # Third column: Bar chart
 st.header('Bar Chart of Canteens')
 st.plotly_chart(fig4)  # แสดง Bar chart ของโรงอาหารในคอลัมน์ที่สาม
+
