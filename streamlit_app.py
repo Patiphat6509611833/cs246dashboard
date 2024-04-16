@@ -50,10 +50,11 @@ st.plotly_chart(fig4)
 st.sidebar.title('Sidebar')
 
 # First column: Pie chart
-st.header('Pie Chart')
+
 col1, col2 = st.beta_columns(2)  # แบ่งหน้าจอเป็น 2 คอลัมน์
 
 with col1:
+    st.header('Pie Chart')
     st.plotly_chart(fig)  # แสดง Pie chart ในคอลัมน์แรก
 
 # Second column: Bar chart
