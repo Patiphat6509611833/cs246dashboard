@@ -135,7 +135,7 @@ if option == "ทำอาหารกินเอง":
         eating_times_df3 = eating_times_df3.sort_values(by='time')
 
 
-        fig_line3 = px.line(eating_times_df2, x='time', y='count',  markers=True)
+        fig_line3 = px.line(eating_times_df3, x='time', y='count',  markers=True)
 
 
         st.plotly_chart(fig_line3)
