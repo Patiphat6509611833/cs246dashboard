@@ -57,8 +57,6 @@ with col1:
 with col2:
     st.header('Bar Chart')
     st.plotly_chart(fig3)  # แสดง Bar chart ในคอลัมน์ที่สอง
-
-# Third column: Bar chart
-st.header('Bar Chart of Canteens')
-st.plotly_chart(fig4)  # แสดง Bar chart ของโรงอาหารในคอลัมน์ที่สาม
+    st.header('Bar Chart of Canteens')
+    st.plotly_chart(fig4)  # แสดง Bar chart ของโรงอาหารในคอลัมน์ที่สาม
 
