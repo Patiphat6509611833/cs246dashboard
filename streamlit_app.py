@@ -54,7 +54,7 @@ if option == "โรงอาหาร":
         st.header('5 ปัจจัยที่ส่งผลมากที่สุดต่อการใช้บริการโรงอาหาร')
         factors = df['ปัจจัยที่ท่านใช้ในการเลือกซื้ออาหารในโรงอาหารมหาวิทยาลัย'].str.split(',').explode().str.strip()
         top_factors = factors.value_counts().head(5)
-        fig2 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={ 'y': 'ปัจจัย'})
+        fig2 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={ 'x': '','y': 'ปัจจัย'})
 
         st.plotly_chart(fig2) 
 
@@ -63,7 +63,7 @@ if option == "โรงอาหาร":
     with col2:
         st.header('โรงอาหารที่นักศึกษามักใช้บริการ')
         mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
-        fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
+        fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'x': '','y': 'จำนวน'})
         st.plotly_chart(fig4)
         st.header('ช่วงเวลาที่นักศึกษามักใช้บริการโรงอาหาร')
         eating_times = df['ในหนึ่งวันท่านรับประทานอาหารในช่วงเวลาไหนบ้าง'].str.split(',').explode().str.strip()
@@ -78,7 +78,7 @@ if option == "โรงอาหาร":
         eating_times_df = eating_times_df.sort_values(by='time')
 
 
-        fig_line = px.line(eating_times_df, x='ช่วงเวลา', y='จำนวนนักศึกษา',  markers=True)
+        fig_line = px.line(eating_times_df, x='time', y='count',  markers=True)
 
 
         st.plotly_chart(fig_line)
