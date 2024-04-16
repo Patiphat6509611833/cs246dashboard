@@ -84,8 +84,30 @@ if option == "โรงอาหาร":
         st.plotly_chart(fig_line)
 
 
+if option == "ร้านค้าภายนอก":
+    col3, col4 = st.columns(2)
+    with col3:
 
+        st.header('เปอร์เซ็นการใช้งานโรงอาหารของนักศึกษา')
+        fig5 = px.pie(df, names='โดยปกติแล้วท่านซื้อ/สั่งอาหารจากร้านค้าภายนอกหรือไม่')
+        st.plotly_chart(fig5)
+       
+        st.header('5 ปัจจัยที่ส่งผลมากที่สุดต่อการใช้บริการโรงอาหาร')
+        factors = df['ปัจจัยที่ท่านใช้ในการเลือกซื้ออาหารที่ร้านอาหารนอกมหาวิทยาลัย'].str.split(',').explode().str.strip()
+        top_factors = factors.value_counts().head(5)
+        fig6 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={ 'x': '','y': 'ปัจจัย'})
 
+        st.plotly_chart(fig6) 
+    with col4:
+        st.header('โรงอาหารที่นักศึกษามักใช้บริการ')
+        # นับความถี่ของค่าแต่ละค่าในคอลัมน์
+        meal_frequency = df['โดยเฉลี่ยแล้วท่านซื้อ/สั่งอาหารวันละกี่มื้อ'].value_counts()
+
+# สร้างกราฟวงกลม
+        fig_pie = px.pie(meal_frequency, values=meal_frequency.values, names=meal_frequency.index, title='โดยเฉลี่ยแล้วท่านซื้อ/สั่งอาหารวันละกี่มื้อ')
+
+# เรียกใช้ Streamlit เพื่อแสดงผล
+        st.plotly_chart(fig_pie)
 
 
 
