@@ -23,12 +23,17 @@ alt.themes.enable("dark")
 # Load data
 df = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
 
-st.sidebar.header("Please Filter Here:")
-city = st.sidebar.multiselect(
-    "Select the City:",
-    options=df["ท่านพักอยู่ที่ใด"].unique(),
-    default=df["ท่านพักอยู่ที่ใด"].unique()
-)
+# Sidebar
+with st.sidebar:
+    st.title('🏂 US Population Dashboard')
+    
+   
+    
+    options = ["โรงอาหาร", "ร้านค้าภายนอก", "ทำอาหารกินเอง"]
+    selected_options = st.multiselect('เลือกหัวข้อ', options)
+
+    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+    selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
 
 
