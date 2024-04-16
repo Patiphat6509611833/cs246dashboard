@@ -45,6 +45,7 @@ fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcante
 # เรียกใช้ Streamlit เพื่อแสดงผล
 st.plotly_chart(fig4)
 
+
 # Sidebar
 st.sidebar.title('Sidebar')
 
