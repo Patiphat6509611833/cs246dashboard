@@ -16,13 +16,12 @@ st.set_page_config(
 alt.themes.enable("dark")
 
 
-#######################
+
 # Load data
 df = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
 
 
-#######################
-# Sidebar
+
 
 
 
