@@ -112,15 +112,6 @@ if option == "ทำอาหารกินเอง":
         fig7= px.pie(df, names='โดยปกติแล้วท่านทำอาหารกินเองหรือไม่')
         st.plotly_chart(fig7)
        
-        
-    with col6:
-        st.header('จำนวนมื้ออาหารที่นักศึกษาทำกินเอง')
-        # นับความถี่ของค่าแต่ละค่าในคอลัมน์
-        meal_frequency2 = df['โดยเฉลี่ยแล้วท่านทำอาหารกินเองวันละกี่มื้อ'].value_counts()
-
-        fig_pie = px.pie(meal_frequency2, values=meal_frequency2.values, names=meal_frequency2.index, title='')
-
-
         st.plotly_chart(fig_pie)
         st.header('ช่วงเวลาที่นักศึกษามักใช้บริการร้านอาหารนอกมหาวิทยาลัย')
         eating_times3 = df['ท่านทำอาหารกินเองในช่วงเวลาใดบ้าง'].str.split(',').explode().str.strip()
@@ -139,6 +130,15 @@ if option == "ทำอาหารกินเอง":
 
 
         st.plotly_chart(fig_line3)
+        
+    with col6:
+        st.header('จำนวนมื้ออาหารที่นักศึกษาทำกินเอง')
+        # นับความถี่ของค่าแต่ละค่าในคอลัมน์
+        meal_frequency2 = df['โดยเฉลี่ยแล้วท่านทำอาหารกินเองวันละกี่มื้อ'].value_counts()
+
+        fig_pie = px.pie(meal_frequency2, values=meal_frequency2.values, names=meal_frequency2.index, title='')
+
+
        
 
 
