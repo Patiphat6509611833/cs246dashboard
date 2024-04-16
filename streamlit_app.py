@@ -38,8 +38,8 @@ with st.sidebar:
     # กรองข้อมูลตามชั้นปีที่เลือก
     df_selected_grade = df_reshaped[df_reshaped['ชั้นปีที่กำลังศึกษาอยู่'] == selected_grade]
     
-    # เรียงลำดับข้อมูลตามประชากรจากมากไปน้อย
-    df_selected_grade_sorted = df_selected_grade.sort_values(by="population", ascending=False)
+    
+    
 
     # สร้างรายการธีมสี
     color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
