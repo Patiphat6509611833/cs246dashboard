@@ -54,7 +54,7 @@ if option == "โรงอาหาร":
         st.header('')
         factors = df['ปัจจัยที่ท่านใช้ในการเลือกซื้ออาหารในโรงอาหารมหาวิทยาลัย'].str.split(',').explode().str.strip()
         top_factors = factors.value_counts().head(5)
-        fig2 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={'x': '', 'y': 'ปัจจัย'})
+        fig2 = px.bar(top_factors, x=top_factors.values, y=top_factors.index, orientation='h', labels={ 'y': 'ปัจจัย'})
 
         st.plotly_chart(fig2) 
 
@@ -63,7 +63,7 @@ if option == "โรงอาหาร":
     with col2:
         st.header('โรงอาหารที่นักศึกษามักใช้บริการ')
         mcanteen = df['โรงอาหารที่ท่านใช้บริการเป็นประจำ'].str.split(',').explode().str.strip()
-        fig4 = px.bar(mcanteen.value_counts(), x=mcanteen.value_counts().index, y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
+        fig4 = px.bar(mcanteen.value_counts(),  y=mcanteen.value_counts().values, labels={'y': 'จำนวน'})
         st.plotly_chart(fig4)
         
 
