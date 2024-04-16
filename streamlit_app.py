@@ -18,7 +18,7 @@ alt.themes.enable("dark")
 
 #######################
 # Load data
-df_reshaped = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
+df = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
 
 
 #######################
@@ -30,13 +30,13 @@ with st.sidebar:
     st.title(' US Population Dashboard')
     
     # สร้างรายการชั้นปีที่กำลังศึกษาอยู่
-    grade_list = list(df_reshaped['ชั้นปีที่กำลังศึกษาอยู่'].unique())[::-1]
+    grade_list = list(df['ชั้นปีที่กำลังศึกษาอยู่'].unique())[::-1]
     
     # เลือกชั้นปี
     selected_grade = st.selectbox('Select a grade', grade_list)
     
     # กรองข้อมูลตามชั้นปีที่เลือก
-    df_selected_grade = df_reshaped[df_reshaped['ชั้นปีที่กำลังศึกษาอยู่'] == selected_grade]
+    df_selected_grade = df[df['ชั้นปีที่กำลังศึกษาอยู่'] == selected_grade]
     
     #
 
@@ -46,3 +46,7 @@ with st.sidebar:
     # เลือกธีมสี
     selected_color_theme = st.selectbox('Select a color theme', color_theme_list)
 
+fig = px.pie(df, names='โปรดระบุเพศ')
+
+# เรียกใช้ Streamlit เพื่อแสดงผล
+st.plotly_chart(fig)
