@@ -22,14 +22,14 @@ alt.themes.enable("dark")
 
 # Load data
 df = pd.read_csv('data/แบบสอบถามพฤติกรรมการเลือกซื้ออาหารของนักศึกษามหาวิทยาลัยธรรมศาสตร์  (Responses) - Form Responses 1.csv')
-# เริ่มต้น Slider
-selected_option = st.select_slider(
-    label="เลือกหัวข้อ:",
-    options=["โรงอาหาร", "ร้านค้าภายนอก", "ทำอาหารกินเอง"]
+
+st.sidebar.header("Please Filter Here:")
+city = st.sidebar.multiselect(
+    "Select the City:",
+    options=df["ท่านพักอยู่ที่ใด"].unique(),
+    default=df["ท่านพักอยู่ที่ใด"].unique()
 )
 
-# แสดงผลหัวข้อที่ถูกเลือก
-st.write("คุณเลือก:", selected_option)
 
 
 
